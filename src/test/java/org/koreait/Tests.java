@@ -49,9 +49,15 @@ public class Tests {
     }
 
     @Test
-    @DisplayName("3 * 1 == 3")
+    @DisplayName("10 + 20 + 30 == 60")
     void t8() {
-        assertThat(Calc.run("3 * 1")).isEqualTo(3);
+        assertThat(Calc.run("10 + 20 + 30")).isEqualTo(60);
+    }
+
+    @Test
+    @DisplayName("10 - 20 + 30 == 20")
+    void t9() {
+        assertThat(Calc.run("10 - 20 + 30")).isEqualTo(20);
     }
 
 }
