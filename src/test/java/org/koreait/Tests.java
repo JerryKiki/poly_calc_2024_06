@@ -60,4 +60,28 @@ public class Tests {
         assertThat(Calc.run("10 - 20 + 30")).isEqualTo(20);
     }
 
+    @Test
+    @DisplayName("10 - 10 - 10 - 10 + 10 + 10 - 10 == -10")
+    void t10() {
+        assertThat(Calc.run("10 - 10 - 10 - 10 + 10 + 10 - 10")).isEqualTo(-10);
+    }
+
+    @Test
+    @DisplayName("100 - 20 + 50 + 100 + 30 - 40 == 220")
+    void t11() {
+        assertThat(Calc.run("100 - 20 + 50 + 100 + 30 - 40")).isEqualTo(220);
+    }
+
+//    @Test
+//    @DisplayName("100 * 20 + 50 == 250")
+//    void t12() {
+//        assertThat(Calc.run("100 * 20 + 50")).isEqualTo(2050);
+//    }
+//
+//    @Test
+//    @DisplayName("100 / 0 == 에러")
+//    void t13() {
+//        assertThat(Calc.run("100 / 0")).isEqualTo(0);
+//    }
+
 }
