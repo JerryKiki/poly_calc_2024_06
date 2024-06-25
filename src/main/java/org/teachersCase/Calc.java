@@ -7,15 +7,6 @@ import java.util.stream.Stream;
 public class Calc {
     public static int run(String exp) {
 
-//        if (exp.contains("(") && exp.contains(")")) {
-//            //괄호 안쪽을 재귀함수써서 새로운 exp 저장
-//            int startIndex = exp.indexOf("(");
-//            int endIndex = exp.lastIndexOf(")");
-//            String insideParenthesis = exp.substring(startIndex + 1, endIndex);
-//            String withParenthesis = exp.substring(startIndex, endIndex + 1);
-//            String replacementExp = Integer.toString(run(insideParenthesis));
-//            exp = exp.replace(withParenthesis, replacementExp);
-//        }
         // 괄호 제거
         exp = stripOuterBrackets(exp);
 
