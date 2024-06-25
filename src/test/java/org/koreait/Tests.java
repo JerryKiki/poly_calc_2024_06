@@ -180,4 +180,46 @@ public class Tests {
     void t29() {
         Assertions.assertThat(Calc.run("10 * 30 / (10 + 5) * 2")).isEqualTo(40);
     }
+
+    @Test
+    @DisplayName("(10 * 30 / (10 + 5) * 2) == 40")
+    void t30() {
+        Assertions.assertThat(Calc.run("(10 * 30 / (10 + 5) * 2)")).isEqualTo(40);
+    }
+
+    @Test
+    @DisplayName("(10 + 20) * 3 == 90")
+    void t31() {
+        Assertions.assertThat(Calc.run("(10 + 20) * 3")).isEqualTo(90);
+    }
+
+    @Test
+    @DisplayName("(10 + 5) / (10 + 5) * 2 == 2")
+    void t32() {
+        Assertions.assertThat(Calc.run("(10 + 5) / (10 + 5) * 2")).isEqualTo(2);
+    }
+
+    @Test
+    @DisplayName("((10 + 5) / (10 + 5) * 2) == 2")
+    void t33() {
+        Assertions.assertThat(Calc.run("((10 + 5) / (10 + 5) * 2)")).isEqualTo(2);
+    }
+
+    @Test
+    @DisplayName("((10 + 5) / (10 + 5) * 2) == 2")
+    void t34() {
+        Assertions.assertThat(Calc.run("((10 + 5) / (10 + 5) * 2)")).isEqualTo(2);
+    }
+
+    @Test
+    @DisplayName("(((10 + 10) / 10 + 10 * 2)) == 22")
+    void t35() {
+        Assertions.assertThat(Calc.run("(((10 + 10) / 10 + 10 * 2))")).isEqualTo(22);
+    }
+
+    @Test
+    @DisplayName("3 * 10 + (40 + 10) / 10 + (10 + 5) == 50")
+    void t36() {
+        Assertions.assertThat(Calc.run("3 * 10 + (40 + 10) / 10 + (10 + 5)")).isEqualTo(50);
+    }
 }

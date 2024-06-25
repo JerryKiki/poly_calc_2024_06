@@ -9,14 +9,30 @@ public class Calc {
     public static int run(String exp) {
 
         //괄호가 있으면
-        if (exp.contains("(") && exp.contains(")")) {
+        while (exp.contains("(") && exp.contains(")")) {
+            //괄호 따로 떼어내서 감지
+            String[] expArr = exp.split("");
+            String[] parenthesis = Arrays.stream(expArr)
+                    .filter(e -> Objects.equals(e, "(") || Objects.equals(e, ")"))
+                    .toArray(String[]::new);
             //괄호 안쪽을 재귀함수써서 새로운 exp 저장
-            int startIndex = exp.indexOf("(");
-            int endIndex = exp.lastIndexOf(")");
-            String insideParenthesis = exp.substring(startIndex + 1, endIndex);
-            String withParenthesis = exp.substring(startIndex, endIndex + 1);
-            String replacementExp = Integer.toString(run(insideParenthesis));
-            exp = exp.replace(withParenthesis, replacementExp);
+            if (!parenthesis[0].equals(parenthesis[1])) {
+                //첫번째와 두번째가 다른 게 나오면 다음 걸 찾고
+                int startIndex = exp.indexOf("(");
+                int endIndex = exp.indexOf(")");
+                String insideParenthesis = exp.substring(startIndex + 1, endIndex);
+                String withParenthesis = exp.substring(startIndex, endIndex + 1);
+                String replacementExp = Integer.toString(run(insideParenthesis));
+                exp = exp.replace(withParenthesis, replacementExp);
+            } else {
+                //첫번째와 두번째가 같은 게 나오면 원래대로
+                int startIndex = exp.indexOf("(");
+                int endIndex = exp.lastIndexOf(")");
+                String insideParenthesis = exp.substring(startIndex + 1, endIndex);
+                String withParenthesis = exp.substring(startIndex, endIndex + 1);
+                String replacementExp = Integer.toString(run(insideParenthesis));
+                exp = exp.replace(withParenthesis, replacementExp);
+            }
         }
 
         //괄호를 처리한 스트링을 공백으로 split
@@ -25,7 +41,7 @@ public class Calc {
         List<String> myCalcs = new ArrayList<>(); //부호만 담을 ArrayList
 
         //ArrayList에 숫자와 부호를 구분해서 저장
-         for (int i = 0; i < bits.length; i++) {
+        for (int i = 0; i < bits.length; i++) {
             if (i % 2 == 0) {
                 myInts.add(Integer.parseInt(bits[i])); //0을 포함한 짝수번째에는 int로 변환해 숫자리스트에 저장
             } else {
@@ -46,7 +62,7 @@ public class Calc {
                 if (multiplyIndex < divideIndex) {//곱셈 인덱스가 더 앞이면 곱셈을 함
                     myInts = myIntsAfterMultiply(myInts, multiplyIndex);
                     myCalcs.remove(multiplyIndex); //*도 이미 사용했으므로 지운다
-                } else if (multiplyIndex > divideIndex) { //나눗셈 인덱스가 더 앞이면 나눗셈을 함
+                } else { //나눗셈 인덱스가 더 앞이면 나눗셈을 함
                     myInts = myIntsAfterDivide(myInts, divideIndex);
                     myCalcs.remove(divideIndex);
                 }
