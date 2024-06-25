@@ -1,5 +1,6 @@
 package org.koreait;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -112,5 +113,71 @@ public class Tests {
     @DisplayName("10 + -10 == 0")
     void t18() {
         assertThat(Calc.run("10 + -10")).isEqualTo(0);
+    }
+
+    @Test
+    @DisplayName("10 / 10 == 1")
+    void t19() {
+        assertThat(Calc.run("10 / 10")).isEqualTo(1);
+    }
+
+    @Test
+    @DisplayName("10 / 10 * 10 == 10")
+    void t20() {
+        assertThat(Calc.run("10 / 10 * 10")).isEqualTo(10);
+    }
+
+    @Test
+    @DisplayName("10 * 20 + 10 + 5 * 2 == 220")
+    void t21() {
+        Assertions.assertThat(Calc.run("10 * 20 + 10 + 5 * 2")).isEqualTo(220);
+    }
+
+    @Test
+    @DisplayName("(10 + 20) == 30")
+    void t22() {
+        Assertions.assertThat(Calc.run("(10 + 20)")).isEqualTo(30);
+    }
+
+    @Test
+    @DisplayName("(((10 + 20))) == 30")
+    void t23() {
+        Assertions.assertThat(Calc.run("(((10 + 20)))")).isEqualTo(30);
+    }
+
+    @Test
+    @DisplayName("((10 + 20)) == 30")
+    void t24() {
+        Assertions.assertThat(Calc.run("((10 + 20))")).isEqualTo(30);
+    }
+
+    @Test
+    @DisplayName("(20 + 20) + 20 == 60")
+    void t25() {
+        Assertions.assertThat(Calc.run("(20 + 20) + 20")).isEqualTo(60);
+    }
+
+    @Test
+    @DisplayName("20 + (20 + 20) == 60")
+    void t26() {
+        Assertions.assertThat(Calc.run("20 + (20 + 20)")).isEqualTo(60);
+    }
+
+    @Test
+    @DisplayName("(20 + (20 + 20)) == 60")
+    void t27() {
+        Assertions.assertThat(Calc.run("(20 + (20 + 20))")).isEqualTo(60);
+    }
+
+    @Test
+    @DisplayName("10 * 20 / 10 + 5 * 2 == 30")
+    void t28() {
+        Assertions.assertThat(Calc.run("10 * 20 / 10 + 5 * 2")).isEqualTo(30);
+    }
+
+    @Test
+    @DisplayName("10 * 30 / (10 + 5) * 2 == 40")
+    void t29() {
+        Assertions.assertThat(Calc.run("10 * 30 / (10 + 5) * 2")).isEqualTo(40);
     }
 }
