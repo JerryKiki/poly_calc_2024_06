@@ -72,16 +72,33 @@ public class Tests {
         assertThat(Calc.run("100 - 20 + 50 + 100 + 30 - 40")).isEqualTo(220);
     }
 
-//    @Test
-//    @DisplayName("100 * 20 + 50 == 250")
-//    void t12() {
-//        assertThat(Calc.run("100 * 20 + 50")).isEqualTo(2050);
-//    }
-//
-//    @Test
-//    @DisplayName("100 / 0 == 에러")
-//    void t13() {
-//        assertThat(Calc.run("100 / 0")).isEqualTo(0);
-//    }
+    @Test
+    @DisplayName("10 * 10 * 10 == 1000")
+    void t12() {
+        assertThat(Calc.run("10 * 10 * 10")).isEqualTo(1000);
+    }
 
+    @Test
+    @DisplayName("10 + 5 * 2 == 20")
+    void t13() {
+        assertThat(Calc.run("10 + 5 * 2")).isEqualTo(20);
+    }
+
+    @Test
+    @DisplayName("10 + 5 * 2 * 4 == 50")
+    void t14() {
+        assertThat(Calc.run("10 + 5 * 2 * 4")).isEqualTo(50);
+    }
+
+    @Test
+    @DisplayName("10 * 3 + 2 * 4 == 50")
+    void t15() {
+        assertThat(Calc.run("10 * 3 + 2 * 4")).isEqualTo(38);
+    }
+
+    @Test
+    @DisplayName("20 + 10 + 5 * 2 == 40")
+    void t16() {
+        assertThat(Calc.run("20 + 10 + 5 * 2")).isEqualTo(40);
+    }
 }
