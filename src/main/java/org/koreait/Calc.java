@@ -6,27 +6,24 @@ import java.util.stream.IntStream;
 public class Calc {
 
     public static int run(String exp) {
-        //contains를 써서 불린으로 if문 해줄 수도 있음
+        //들어온 스트링을 공백으로 split
         String[] bits = exp.split(" ");
-        List<Integer> myInts = new ArrayList<>();
-        List<String> myCalcs = new ArrayList<>();
+        List<Integer> myInts = new ArrayList<>(); //숫자만 담을 ArrayList
+        List<String> myCalcs = new ArrayList<>(); //부호만 담을 ArrayList
 
+        //ArrayList에 숫자와 부호를 구분해서 저장
         for (int i = 0; i < bits.length; i++) {
             if (i % 2 == 0) {
-                myInts.add(Integer.parseInt(bits[i]));
+                myInts.add(Integer.parseInt(bits[i])); //0을 포함한 짝수번째에는 int로 변환해 숫자리스트에 저장
             } else {
-                myCalcs.add(bits[i]);
+                myCalcs.add(bits[i]); //홀수번째에는 String 그대로 부호리스트에 저장
             }
         }
 
-        //System.out.println(myInts);
-        //System.out.println(myCalcs);
-
-        //부호 인덱스 1번이면 넘버 1, 2번끼리
-        //부호 인덱스 0번이면 넘버 0, 1번끼리
-
-        //System.out.println(myInts.size());
-
+        //인덱스 규칙성 발견
+        //부호 인덱스 1번이면 넘버 인덱스 1, 2번끼리
+        //부호 인덱스 0번이면 넘버 인덱스 0, 1번끼리
+        //부호인덱스 * 부호인덱스+1 해주면 됨
         //곱셈부터 처리해서 +, -만 있는 arraylist로 재정립
 
         while (myCalcs.contains("*")) { //부호 중 *이 있는동안 반복, * 중 앞에서부터 계산하게 된다

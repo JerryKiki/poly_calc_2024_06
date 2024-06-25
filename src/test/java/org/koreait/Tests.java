@@ -101,4 +101,16 @@ public class Tests {
     void t16() {
         assertThat(Calc.run("20 + 10 + 5 * 2")).isEqualTo(40);
     }
+
+    @Test
+    @DisplayName("10 * -10 == -100")
+    void t17() {
+        assertThat(Calc.run("10 * -10")).isEqualTo(-100);
+    }
+
+    @Test
+    @DisplayName("10 + -10 == 0")
+    void t18() {
+        assertThat(Calc.run("10 + -10")).isEqualTo(0);
+    }
 }
