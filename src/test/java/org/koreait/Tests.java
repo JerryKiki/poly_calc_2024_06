@@ -5,6 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 public class Tests {
     @Test
@@ -272,7 +273,7 @@ public class Tests {
     }
 
     @Test
-    @DisplayName("3 * 1 + (1 - (4 * 1 - (1 - 1))) = 0")
+    @DisplayName("3 * 1 + (1 - (4 * 1 - (1 - 1))) == 0")
     void t45() {
         Assertions.assertThat(Calc.run("3 * 1 + (1 - (4 * 1 - (1 - 1)))")).isEqualTo(0);
     }
@@ -284,9 +285,16 @@ public class Tests {
     }
 
     @Test
-    @DisplayName("10 / 0 == 에러")
+    @DisplayName("10 / 0 == 0으로 나누는 에러")
     void t47() {
-        Exception zeroDivide = new RuntimeException("0으로 나누어지는 경우가 있어 계산이 불가능합니다.");
-        Assertions.assertThat(Calc.run("10 / 0")).isEqualTo(zeroDivide);
+        assertThatThrownBy(() -> Calc.run("10 / 0"))
+                .isInstanceOf(RuntimeException.class)
+                .hasMessage("0으로 나누어지는 경우가 있어 계산이 불가능합니다.");
+    }
+
+    @Test
+    @DisplayName("-(8 + 2) * -(7 + 3) + 5 == 105")
+    void t48() {
+        Assertions.assertThat(Calc.run("-(8 + 2) * -(7 + 3) + 5")).isEqualTo(105);
     }
 }

@@ -23,9 +23,10 @@ public class Calc {
 
         if (needToSplit) {
             int bracketsCount = 0;
+            int idxOfFirstBracket = exp.indexOf("(");
             int splitPointIndex = -1;
 
-            for (int i = 0; i < exp.length(); i++) {
+            for (int i = idxOfFirstBracket; i < exp.length(); i++) {
                 if (exp.charAt(i) == '(') {
                     bracketsCount++;
                 } else if (exp.charAt(i) == ')') {
@@ -36,19 +37,24 @@ public class Calc {
                     break;
                 }
             }
-            String firstExp = exp.substring(0, splitPointIndex + 1);
-            String secondExp = exp.substring(splitPointIndex + 4);
+            String bracketExp = exp.substring(idxOfFirstBracket, splitPointIndex + 1); //괄호부터 괄호까지 자르는 건 해결
+            //String secondExp = exp.substring(splitPointIndex + 4); //뒤에만 처리됨... 앞에 있을때도 처리해줘야함
+
+            int bracketRs = Calc.run(bracketExp);
+
+            exp = exp.replace(bracketExp, Integer.toString(bracketRs));
 
             //t24해결 내 방식
             //exp = exp.replace(firstExp, Integer.toString(Calc.run(firstExp)));
             //exp = exp.replace(secondExp, Integer.toString(Calc.run(secondExp)));
 
-            char operator = exp.charAt(splitPointIndex + 2);
-            exp = Calc.run(firstExp) + " " + operator + " " + Calc.run(secondExp);
+            //char operator = exp.charAt(splitPointIndex + 2);
+            //exp = Calc.run(firstExp) + " " + operator + " " + Calc.run(secondExp);
 
             return Calc.run(exp);
 
         } else if (needToCompound) {
+            exp = exp.replaceAll("- ", "+ -");
             String[] bits = exp.split(" \\+ ");
 
             String newExp = Arrays.stream(bits)
