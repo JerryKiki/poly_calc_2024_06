@@ -222,4 +222,71 @@ public class Tests {
     void t36() {
         Assertions.assertThat(Calc.run("3 * 10 + (40 + 10) / 10 + (10 + 5)")).isEqualTo(50);
     }
+
+    @Test
+    @DisplayName("((20 + 20)) + 20 == 60")
+    void t37() {
+        Assertions.assertThat(Calc.run("((20 + 20)) + 20")).isEqualTo(60);
+    }
+
+    @Test
+    @DisplayName("(10 + 20) * 3 == 90")
+    void t38() {
+        Assertions.assertThat(Calc.run("(10 + 20) * 3")).isEqualTo(90);
+    }
+
+    @Test
+    @DisplayName("10 + (10 + 5) == 25")
+    void t39() {
+        Assertions.assertThat(Calc.run("10 + (10 + 5)")).isEqualTo(25);
+    }
+
+    @Test
+    @DisplayName("-(10 + 5) == -15")
+    void t40() {
+        Assertions.assertThat(Calc.run("-(10 + 5)")).isEqualTo(-15);
+    }
+
+    @Test
+    @DisplayName(" -(10 + 5) == -15")
+    void t41() {
+        Assertions.assertThat(Calc.run(" -(10 + 5)")).isEqualTo(-15);
+    }
+
+    @Test
+    @DisplayName("-10 / 2 == -5")
+    void t42() {
+        Assertions.assertThat(Calc.run("-10 / 2")).isEqualTo(-5);
+    }
+
+    @Test
+    @DisplayName("5 / 2 == 2.5")
+    void t43() {
+        Assertions.assertThat(Calc.run("5 / 2")).isEqualTo(2.5);
+    }
+
+    @Test
+    @DisplayName("10 / 2 == 5")
+    void t44() {
+        Assertions.assertThat(Calc.run("10 / 2")).isEqualTo(5);
+    }
+
+    @Test
+    @DisplayName("3 * 1 + (1 - (4 * 1 - (1 - 1))) = 0")
+    void t45() {
+        Assertions.assertThat(Calc.run("3 * 1 + (1 - (4 * 1 - (1 - 1)))")).isEqualTo(0);
+    }
+
+    @Test
+    @DisplayName("10 / 2.5 == 4")
+    void t46() {
+        Assertions.assertThat(Calc.run("10 / 2.5")).isEqualTo(4);
+    }
+
+    @Test
+    @DisplayName("10 / 0 == 에러")
+    void t47() {
+        Exception zeroDivide = new RuntimeException("0으로 나누어지는 경우가 있어 계산이 불가능합니다.");
+        Assertions.assertThat(Calc.run("10 / 0")).isEqualTo(zeroDivide);
+    }
 }
