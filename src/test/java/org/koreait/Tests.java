@@ -331,4 +331,10 @@ public class Tests {
     void t53() {
         Assertions.assertThat(Calc.run("10 / 3")).isEqualTo(3.333);
     }
+
+    @Test
+    @DisplayName("-(8 + 2) * -(7 + 3) + 5 == 105")
+    void t54() {
+        Assertions.assertThat(Calc.run("-(8 + 2) * -(7 + 3) + 5")).isEqualTo(105);
+    }
 }
