@@ -48,6 +48,7 @@ public class Calc {
             //exp = exp.replace(firstExp, Integer.toString(Calc.run(firstExp)));
             //exp = exp.replace(secondExp, Integer.toString(Calc.run(secondExp)));
 
+            //기존 exp 처리 replace 방식
             //char operator = exp.charAt(splitPointIndex + 2);
             //exp = Calc.run(firstExp) + " " + operator + " " + Calc.run(secondExp);
 

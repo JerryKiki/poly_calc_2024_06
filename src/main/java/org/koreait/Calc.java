@@ -81,7 +81,7 @@ public class Calc {
         //재정립된 arraylist들로 +, - 계산
         double sum = plusAndMinus(myDouble, myCalcs);
 
-        return sum;
+        return Math.round(sum * 1000) / 1000.0; //실수인 경우도 있으므로, 소숫점 셋째자리까지 리턴
     }
 
     public static int checkMultiply(List<String> myCalcs) {

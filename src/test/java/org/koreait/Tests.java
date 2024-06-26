@@ -297,4 +297,38 @@ public class Tests {
     void t48() {
         Assertions.assertThat(Calc.run("-(8 + 2) * -(7 + 3) + 5")).isEqualTo(105);
     }
+
+    @Test
+    @DisplayName("10 / (5 - 5) == 0으로 나누는 에러")
+    void t49() {
+        assertThatThrownBy(() -> Calc.run("10 / (5 - 5)"))
+                .isInstanceOf(RuntimeException.class)
+                .hasMessage("0으로 나누어지는 경우가 있어 계산이 불가능합니다.");
+    }
+
+    @Test
+    @DisplayName("10 * 10 / (5 - 5) == 0으로 나누는 에러")
+    void t50() {
+        assertThatThrownBy(() -> Calc.run("10 * 10 / (5 - 5)"))
+                .isInstanceOf(RuntimeException.class)
+                .hasMessage("0으로 나누어지는 경우가 있어 계산이 불가능합니다.");
+    }
+
+    @Test
+    @DisplayName("5 * (3 + 5) / 2.5 == 16")
+    void t51() {
+        Assertions.assertThat(Calc.run("5 * (3 + 5) / 2.5")).isEqualTo(16);
+    }
+
+    @Test
+    @DisplayName("5 * (3 + 6) / 4 == 11.25")
+    void t52() {
+        Assertions.assertThat(Calc.run("5 * (3 + 6) / 4")).isEqualTo(11.25);
+    }
+
+    @Test
+    @DisplayName("10 / 3 == 3.333")
+    void t53() {
+        Assertions.assertThat(Calc.run("10 / 3")).isEqualTo(3.333);
+    }
 }
